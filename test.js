@@ -8,18 +8,24 @@
         return {status: 2, msg: 'Ready'};
     };
 
-    ext.my_first_block = function() {
-        // Code that gets executed when the block is run
+    // Functions for block with type 'w' will get a callback function as the 
+    // final argument. This should be called to indicate that the block can
+    // stop waiting.
+    ext.wait_random = function(callback) {
+        wait = Math.random();
+        console.log('Waiting for ' + wait + ' seconds');
+        window.setTimeout(function() {
+            callback();
+        }, wait*1000);
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            // Block type, block name, function name
-            [' ', 'my first block', 'my_first_block'],
+            ['w', 'wait for random time', 'wait_random'],
         ]
     };
 
     // Register the extension
-    ScratchExtensions.register('My first extension', descriptor, ext);
+    ScratchExtensions.register('Random wait extension', descriptor, ext);
 })({});
