@@ -1635,7 +1635,9 @@ Process.prototype.reportListItem = function (index, list) {
     }
     return list.at(idx);
 };
-
+Process.prototype.reportNewTuple = function (elements) {
+    return new Tuple(elements.asArray());
+};
 Process.prototype.reportListLength = function (list) {
     // this.assertType(list, 'list');
     return list.length();
@@ -1651,6 +1653,7 @@ Process.prototype.doShowTable = function (list) {
     this.assertType(list, 'list');
     new TableDialogMorph(list).popUp(this.blockReceiver().world());
 };
+
 
 // Process conditionals primitives
 
