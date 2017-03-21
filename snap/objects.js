@@ -1103,6 +1103,11 @@ SpriteMorph.prototype.initBlocks = function () {
             category: 'lists',
             spec: 'list %exp'
         },
+        reportNewTuple: {
+            type: 'reporter',
+            category: 'lists',
+            spec: 'tuple %mult%s'
+        },
         reportCONS: {
             type: 'reporter',
             category: 'lists',
@@ -2136,6 +2141,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push('=');
 
         blocks.push(block('reportNewList'));
+        blocks.push(block('reportNewTuple'))
         blocks.push('-');
         blocks.push(block('reportCONS'));
         blocks.push(block('reportListItem'));
