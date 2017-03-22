@@ -946,7 +946,7 @@ Set.prototype.init = function (array) {
     this.contents = [];
     for (i = 0, i < array.length - 1 , i += 1) {
         item1, item2 = array[i], array[i + 1];
-        if (item1.isHashable in [null, undefined] || item2.isHashable in [null, undefined] ? true : (item1.isHashable || item2.isHashable) {
+        if ((item1.isHashable in [null, undefined] || item2.isHashable in [null, undefined]) ? true : (item1.isHashable || item2.isHashable) {
             throw new Error ( 'unhashable type' );
         };
         if (item1 !== item2) {
@@ -958,6 +958,6 @@ Set.prototype.init = function (array) {
     this.isLinked = false;
     this.lastChanged = Date.now();
     this.at = function (idx) {
-        throw new Error ( 'set does not support indexing' )
+        throw new Error ( 'set does not support indexing' );
     };
 };
