@@ -67,6 +67,7 @@ modules.lists = '2017-January-31';
 var List;
 var ListWatcherMorph;
 var Tuple;
+var Set;
 
 // List ////////////////////////////////////////////////////////////////
 
@@ -111,6 +112,7 @@ function List(array) {
     this.rest = null;
     this.isLinked = false;
     this.lastChanged = Date.now();
+    this.isHashable = false
 }
 
 // List global preferences
@@ -663,7 +665,9 @@ ListWatcherMorph.prototype.update = function (anyway) {
         cell = this.frame.contents.children[i];
         label = this.frame.contents.children[i + 1];
         button = this.frame.contents.children[i + 2];
-        cnts = this.list.at(idx);
+        // this.list.at(idx)
+        lst = this.list;
+        cnts = lst instanceof Set ? lst.contents[idx] : lst.at(idx);
 
         if (cell.contents !== cnts) {
             cell.contents = cnts;
@@ -930,5 +934,30 @@ Tuple.prototype.init = function (array) {
     this.lastChanged = Date.now();
     this.add = this.remove = this.put = this.clear = function () {
         throw new Error('tuples cannot be changed');
+    };
+};
+Set.prototype = new List();
+Set.prototype.constructor = Set;
+Set.uber = List.prototype;
+function Set(array) {
+    this.init(array);
+};
+Set.prototype.init = function (array) {
+    this.contents = [];
+    for (i = 0, i < array.length - 1 , i += 1) {
+        item1, item2 = array[i], array[i + 1];
+        if (item1.isHashable in [null, undefined] || item2.isHashable in [null, undefined] ? true : (item1.isHashable || item2.isHashable) {
+            throw new Error ( 'unhashable type' );
+        };
+        if (item1 !== item2) {
+            this.contents.push(item1);
+        };
+    };
+    this.first = null;
+    this.rest = null;
+    this.isLinked = false;
+    this.lastChanged = Date.now();
+    this.at = function (idx) {
+        throw new Error ( 'set does not support indexing' )
     };
 };
