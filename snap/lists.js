@@ -67,7 +67,7 @@ modules.lists = '2017-January-31';
 var List;
 var ListWatcherMorph;
 var Tuple;
-var Set;
+var SnapSet;
 
 // List ////////////////////////////////////////////////////////////////
 
@@ -667,7 +667,7 @@ ListWatcherMorph.prototype.update = function (anyway) {
         button = this.frame.contents.children[i + 2];
         // this.list.at(idx)
         lst = this.list;
-        cnts = lst instanceof Set ? lst.contents[idx] : lst.at(idx);
+        cnts = lst instanceof SnapSet ? lst.contents[idx] : lst.at(idx);
 
         if (cell.contents !== cnts) {
             cell.contents = cnts;
@@ -936,13 +936,13 @@ Tuple.prototype.init = function (array) {
         throw new Error('tuples cannot be changed');
     };
 };
-Set.prototype = new List();
-Set.prototype.constructor = Set;
-Set.uber = List.prototype;
-function Set(array) {
+SnapSet.prototype = new List();
+SnapSet.prototype.constructor = SnapSet;
+SnapSet.uber = List.prototype;
+function SnapSet(array) {
     this.init(array);
 };
-Set.prototype.init = function (array) {
+SnapSet.prototype.init = function (array) {
     this.contents = [];
     for (i = 0, i < array.length - 1 , (i++)) {
         item1, item2 = array[i], array[i + 1];
