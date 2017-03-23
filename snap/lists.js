@@ -665,9 +665,8 @@ ListWatcherMorph.prototype.update = function (anyway) {
         cell = this.frame.contents.children[i];
         label = this.frame.contents.children[i + 1];
         button = this.frame.contents.children[i + 2];
-        // this.list.at(idx)
         lst = this.list;
-        cnts = lst instanceof SnapSet ? lst.contents[idx] : lst.at(idx);
+        cnts = lst.at(idx);
 
         if (cell.contents !== cnts) {
             cell.contents = cnts;
