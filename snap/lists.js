@@ -936,7 +936,7 @@ Tuple.prototype.init = function (array) {
         throw new Error('tuples cannot be changed');
     };
 };
-SnapSet.prototype = new List();
+/*SnapSet.prototype = new List();
 SnapSet.prototype.constructor = SnapSet;
 SnapSet.uber = List.prototype;
 function SnapSet(array) {
@@ -960,4 +960,4 @@ SnapSet.prototype.init = function (array) {
     this.at = function (idx) {
         throw new Error ( 'set does not support indexing' );
     };
-};
+};*/
