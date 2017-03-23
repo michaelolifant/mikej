@@ -667,7 +667,6 @@ ListWatcherMorph.prototype.update = function (anyway) {
         button = this.frame.contents.children[i + 2];
         lst = this.list;
         cnts = lst.at(idx);
-
         if (cell.contents !== cnts) {
             cell.contents = cnts;
             cell.drawNew();
